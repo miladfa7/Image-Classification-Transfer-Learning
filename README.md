@@ -1,16 +1,16 @@
 # Image-Classification-Transfer-Learning
-## Building ResNet152V2 Model for Image Classification with Small Dataset (99.5% accuracy)
+### Building ResNet152V2 Model for Image Classification with Small Dataset (99.5% accuracy)
 
 Number of classes: 20 (Classes 0-19)<br>
 
-<font color="red"> classes = owl | galaxy | lightning | wine-bottle | t-shirt | waterfall |  sword |  school-bus |
+<font color="red"> Classes = owl | galaxy | lightning | wine-bottle | t-shirt | waterfall |  sword |  school-bus |
                          calculator | sheet-music | airplanes |  lightbulb |  skyscraper | mountain-bike | fireworks | 
                          computer-monitor | bear | grand-piano | kangaroo | laptop ]</font><br>
 <br>                     
 <b>Dataset Structure</b><br>
    Two folders:<br>
-    training: 1554 images<br>
-    test: 500 images<br>
+  Training: 1554 images<br>
+    Test: 500 images<br>
  
     Images per class:
     
@@ -36,4 +36,29 @@ Number of classes: 20 (Classes 0-19)<br>
     kangaroo : 57   
 
 ### visualization of training data 
-<img src="https://github.com/miladfa7/Image-Classification-Transfer-Learning/blob/master/images/dataet%20image%20classification.png" width="500" alt="accessibility text">
+<img src="https://github.com/miladfa7/Image-Classification-Transfer-Learning/blob/master/images/dataet%20image%20classification.png" width="500" alt="image classification with transfer learning ">
+
+### Result 
+The accuracy of the training reached 99.5% in 50 epoch.<br>
+The accuracy of the test reached 95% that i submitted to kaggle.<br>
+
+<img src="https://github.com/miladfa7/Image-Classification-Transfer-Learning/blob/master/images/result.png" width="800" alt="result resnet152"> </img>
+
+
+### CSV file for kaggle submission<br>
+```
+predicted_class_indices=np.argmax(pred,axis=1)
+labels = train_gen.class_indices
+labels = dict((v,k) for k,v in labels.items())
+predictions = [k for k in predicted_class_indices]
+
+filenames=test_gen.filenames
+FN=[]
+for i in filenames:
+  f = i[5:]
+  FN.append(f)
+ 
+results=pd.DataFrame({"Id":FN,
+                      "Category":predictions})
+results.to_csv("submission.csv",index=False)
+```
