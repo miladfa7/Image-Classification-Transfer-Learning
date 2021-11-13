@@ -1,5 +1,5 @@
 # Image-Classification-Transfer-Learning
-### Building ResNet152V2 Model for Image Classification with Small Dataset (99.5% accuracy)
+### Building ResNet152V2 Model for Image Classification with Small Dataset (95% accuracy)
 
 Number of classes: 20 (Classes 0-19)<br>
 
